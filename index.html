@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FlyPath Immigration Services | Your Pathway to Global Opportunities</title>
+<link rel="icon" type="image/png" href="assets/logo-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: {
+            950: '#081B33',
+            900: '#0B2545',
+            800: '#123564',
+            700: '#1B4A82',
+            600: '#2E6FBA',
+          },
+          gold: {
+            500: '#C99A2E',
+            400: '#D4A72C',
+            300: '#E8C158',
+            200: '#F2D27E',
+          },
+          paper: '#F7F9FC',
+          ink: '#17202B',
+          slate: '#52657A',
+        },
+        fontFamily: {
+          display: ['Sora', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: #17202B; background: #F7F9FC; }
+  .font-display { font-family: 'Sora', sans-serif; }
+
+  /* dotted world texture */
+  .dot-field {
+    background-image: radial-gradient(rgba(255,255,255,0.14) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+  .dot-field-dark {
+    background-image: radial-gradient(rgba(11,37,69,0.10) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* flight path plane rider */
+  @keyframes fly-across {
+    0%   { left: -6%; top: 62%; transform: rotate(6deg); }
+    20%  { left: 18%; top: 30%; transform: rotate(-4deg); }
+    45%  { left: 45%; top: 55%; transform: rotate(8deg); }
+    70%  { left: 72%; top: 22%; transform: rotate(-6deg); }
+    100% { left: 104%; top: 45%; transform: rotate(4deg); }
+  }
+  .plane-rider {
+    position: absolute;
+    animation: fly-across 16s linear infinite;
+    will-change: left, top, transform;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .plane-rider { animation: none; left: 45%; top: 40%; }
+  }
+
+  /* dashed route line */
+  .route-line {
+    background-image: linear-gradient(to right, transparent 0%, transparent 50%, #D4A72C 50%, #D4A72C 100%);
+    background-size: 14px 2px;
+    background-repeat: repeat-x;
+    background-position: center;
+  }
+  .route-line-v {
+    background-image: linear-gradient(to bottom, transparent 0%, transparent 50%, #C7D2DE 50%, #C7D2DE 100%);
+    background-size: 2px 12px;
+    background-repeat: repeat-y;
+    background-position: center;
+  }
+
+  /* boarding pass perforation */
+  .perforated { position: relative; }
+  .perforated::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 0;
+    border-top: 2px dashed #D8DEE7;
+  }
+
+  .stamp-ring {
+    border: 2px dashed rgba(212,167,44,0.55);
+  }
+
+  ::selection { background: #D4A72C; color: #0B2545; }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 2px solid #D4A72C;
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ============================================================ -->
+<!-- SHARED HEADER START — copy this exact block onto every page  -->
+<!-- Update the `data-nav` value on the matching link to "active"  -->
+<!-- ============================================================ -->
+<header class="fixed top-0 inset-x-0 z-50 bg-navy-900/95 backdrop-blur border-b border-navy-800">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <a href="index.html" class="flex items-center gap-2 shrink-0">
+        <img src="assets/logo-icon.png" alt="FlyPath Immigration Services" class="h-9 lg:h-10 w-auto" />
+        <span class="font-display font-bold text-lg lg:text-xl tracking-tight text-white">FlyPath</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-9 font-display text-sm font-medium">
+        <a href="#home" class="text-white/90 hover:text-gold-300 transition-colors">Home</a>
+        <a href="#about" class="text-white/90 hover:text-gold-300 transition-colors">About</a>
+        <a href="#services" class="text-white/90 hover:text-gold-300 transition-colors">Services</a>
+        <a href="#countries" class="text-white/90 hover:text-gold-300 transition-colors">Countries</a>
+        <a href="#insurance" class="text-white/90 hover:text-gold-300 transition-colors">Insurance</a>
+        <a href="#contact" class="text-white/90 hover:text-gold-300 transition-colors">Contact</a>
+      </nav>
+
+      <div class="hidden lg:block">
+        <a href="#contact" class="inline-flex items-center gap-2 bg-gold-400 hover:bg-gold-300 text-navy-950 font-display font-semibold text-sm px-5 py-2.5 rounded-full transition-colors">
+          Book a Consultation
+        </a>
+      </div>
+
+      <button id="menuBtn" aria-label="Open menu" aria-expanded="false" class="lg:hidden text-white p-2 -mr-2">
+        <svg id="iconOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="iconClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- mobile panel -->
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-navy-800 bg-navy-900">
+    <nav class="px-6 py-5 flex flex-col gap-4 font-display text-sm font-medium">
+      <a href="#home" class="text-white/90 hover:text-gold-300">Home</a>
+      <a href="#about" class="text-white/90 hover:text-gold-300">About</a>
+      <a href="#services" class="text-white/90 hover:text-gold-300">Services</a>
+      <a href="#countries" class="text-white/90 hover:text-gold-300">Countries</a>
+      <a href="#insurance" class="text-white/90 hover:text-gold-300">Insurance</a>
+      <a href="#contact" class="text-white/90 hover:text-gold-300">Contact</a>
+      <a href="#contact" class="mt-2 inline-flex justify-center items-center gap-2 bg-gold-400 text-navy-950 font-semibold px-5 py-2.5 rounded-full">
+        Book a Consultation
+      </a>
+    </nav>
+  </div>
+</header>
+<!-- ============================================================ -->
+<!-- SHARED HEADER END                                             -->
+<!-- ============================================================ -->
+
+<main>
+
+<!-- ============================= HERO ============================= -->
+<section id="home" class="relative overflow-hidden bg-navy-900 pt-32 pb-24 lg:pt-44 lg:pb-32">
+  <div class="absolute inset-0 dot-field"></div>
+  <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-gold-400/10 blur-3xl"></div>
+  <div class="absolute -bottom-32 -left-16 h-80 w-80 rounded-full bg-navy-600/20 blur-3xl"></div>
+
+  <!-- flying plane rider -->
+  <svg class="plane-rider h-7 w-7 text-gold-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M21.7 3.3a1 1 0 0 0-1-.24L2.4 8.9a1 1 0 0 0-.06 1.88l7.2 2.66 2.66 7.2a1 1 0 0 0 1.88-.06l5.84-18.3a1 1 0 0 0-.22-1z"/>
+  </svg>
+
+  <div class="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
+    <p class="font-display text-gold-300 text-xs lg:text-sm tracking-[0.3em] uppercase mb-5">Visa &amp; Immigration Consultancy</p>
+    <h1 class="font-display font-bold text-white text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight">
+      Chart Your Course to a<br class="hidden sm:block" /> New <span class="text-gold-300">Country</span>
+    </h1>
+    <p class="mt-6 text-white/70 text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
+      FlyPath guides individuals and families through every leg of the immigration journey — honest timelines, clear advice, and paperwork that actually gets filed on time.
+    </p>
+
+    <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gold-400 hover:bg-gold-300 text-navy-950 font-display font-semibold px-7 py-3.5 rounded-full transition-colors">
+        Start Your Assessment
+      </a>
+      <a href="#services" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-white/25 hover:border-gold-300 hover:text-gold-300 text-white font-display font-semibold px-7 py-3.5 rounded-full transition-colors">
+        Explore Services
+      </a>
+    </div>
+
+    <!-- waypoint stat strip -->
+    <div class="mt-16 route-line">
+      <div class="grid grid-cols-3 gap-4">
+        <div class="bg-navy-900 px-2">
+          <p class="font-display font-bold text-gold-300 text-2xl lg:text-3xl">25K+</p>
+          <p class="text-white/60 text-xs lg:text-sm mt-1">Travelers Guided</p>
+        </div>
+        <div class="bg-navy-900 px-2">
+          <p class="font-display font-bold text-gold-300 text-2xl lg:text-3xl">60+</p>
+          <p class="text-white/60 text-xs lg:text-sm mt-1">Countries Covered</p>
+        </div>
+        <div class="bg-navy-900 px-2">
+          <p class="font-display font-bold text-gold-300 text-2xl lg:text-3xl">98%</p>
+          <p class="text-white/60 text-xs lg:text-sm mt-1">Approval Rate</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= TRUST STRIP ============================= -->
+<section class="bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5">
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-slate text-sm font-medium">
+      <span class="inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-gold-400"></span>Licensed Consultants (RCIC)</span>
+      <span class="inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-gold-400"></span>Real-Time Case Tracking</span>
+      <span class="inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-gold-400"></span>Family Sponsorship Experts</span>
+      <span class="inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-gold-400"></span>Fast-Track Processing</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= ABOUT / TRUST ============================= -->
+<section id="about" class="py-24 lg:py-32 bg-paper">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+
+    <div class="reveal order-2 lg:order-1">
+      <div class="relative aspect-[4/3] rounded-2xl bg-gradient-to-br from-navy-800 to-navy-900 overflow-hidden">
+        <div class="absolute inset-0 dot-field"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="h-40 w-40 lg:h-52 lg:w-52 rounded-full stamp-ring flex items-center justify-center">
+            <img src="" alt="" class="h-20 lg:h-28 w-auto opacity-90" />
+          </div>
+        </div>
+        <div class="absolute bottom-5 left-5 right-5 flex items-center justify-between text-white/70 text-xs font-display tracking-widest uppercase">
+          <span>Est. Global Network</span>
+          <span>15+ Years</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-1 lg:order-2 reveal">
+      <p class="font-display text-gold-500 text-xs tracking-[0.3em] uppercase mb-4">Why FlyPath</p>
+      <h2 class="font-display font-bold text-3xl lg:text-4xl text-navy-900 leading-tight">
+        A Consultancy Built Around Trust, Not Just Paperwork
+      </h2>
+      <p class="mt-5 text-slate leading-relaxed">
+        With over 15 years of combined experience, our team of Regulated Canadian Immigration Consultants (RCICs) has helped travelers move to Canada, Australia, the UK and beyond. We keep you informed at every step, so there's never a question about where your file stands.
+      </p>
+
+      <div class="mt-9 grid sm:grid-cols-2 gap-6">
+        <div class="flex gap-3">
+          <div class="shrink-0 h-9 w-9 rounded-lg bg-navy-900 flex items-center justify-center">
+            <svg class="h-5 w-5 text-gold-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <p class="font-display font-semibold text-navy-900 text-sm">Licensed &amp; Regulated</p>
+            <p class="text-slate text-sm mt-1">Every consultant is RCIC-certified and accountable.</p>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="shrink-0 h-9 w-9 rounded-lg bg-navy-900 flex items-center justify-center">
+            <svg class="h-5 w-5 text-gold-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <p class="font-display font-semibold text-navy-900 text-sm">Transparent Pricing</p>
+            <p class="text-slate text-sm mt-1">No hidden fees — every cost is laid out upfront.</p>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="shrink-0 h-9 w-9 rounded-lg bg-navy-900 flex items-center justify-center">
+            <svg class="h-5 w-5 text-gold-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"/></svg>
+          </div>
+          <div>
+            <p class="font-display font-semibold text-navy-900 text-sm">Dedicated Case Manager</p>
+            <p class="text-slate text-sm mt-1">One point of contact from day one to landing.</p>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="shrink-0 h-9 w-9 rounded-lg bg-navy-900 flex items-center justify-center">
+            <svg class="h-5 w-5 text-gold-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.4-4 8-9 8a9.7 9.7 0 01-4-.8L3 20l1.1-3.3A7.9 7.9 0 013 12c0-4.4 4-8 9-8s9 3.6 9 8z"/></svg>
+          </div>
+          <div>
+            <p class="font-display font-semibold text-navy-900 text-sm">Multilingual Support</p>
+            <p class="text-slate text-sm mt-1">Guidance in the language you're most comfortable in.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= HOW WE WORK (zigzag route) ============================= -->
+<section class="py-24 lg:py-32 bg-navy-900 relative overflow-hidden">
+  <div class="absolute inset-0 dot-field"></div>
+  <div class="relative max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <p class="font-display text-gold-300 text-xs tracking-[0.3em] uppercase mb-4">Our Process</p>
+      <h2 class="font-display font-bold text-3xl lg:text-4xl text-white">The Route We Fly Together</h2>
+    </div>
+
+    <div class="mt-16 grid md:grid-cols-4 gap-8 md:gap-6">
+      <div class="reveal md:mt-0">
+        <div class="route-line mb-6 hidden md:block"></div>
+        <div class="h-11 w-11 rounded-full bg-gold-400 text-navy-950 font-display font-bold flex items-center justify-center mb-4">1</div>
+        <p class="font-display font-semibold text-white">Discovery Call</p>
+        <p class="text-white/60 text-sm mt-2 leading-relaxed">We learn your goals, background and eligibility for the pathways available to you.</p>
+      </div>
+      <div class="reveal md:mt-10">
+        <div class="route-line mb-6 hidden md:block"></div>
+        <div class="h-11 w-11 rounded-full bg-gold-400 text-navy-950 font-display font-bold flex items-center justify-center mb-4">2</div>
+        <p class="font-display font-semibold text-white">Tailored Roadmap</p>
+        <p class="text-white/60 text-sm mt-2 leading-relaxed">A step-by-step plan built around the right visa category for your situation.</p>
+      </div>
+      <div class="reveal md:mt-0">
+        <div class="route-line mb-6 hidden md:block"></div>
+        <div class="h-11 w-11 rounded-full bg-gold-400 text-navy-950 font-display font-bold flex items-center justify-center mb-4">3</div>
+        <p class="font-display font-semibold text-white">Documentation &amp; Filing</p>
+        <p class="text-white/60 text-sm mt-2 leading-relaxed">We prepare, review and submit every form so nothing gets sent back.</p>
+      </div>
+      <div class="reveal md:mt-10">
+        <div class="route-line mb-6 hidden md:block"></div>
+        <div class="h-11 w-11 rounded-full bg-gold-400 text-navy-950 font-display font-bold flex items-center justify-center mb-4">4</div>
+        <p class="font-display font-semibold text-white">Landing &amp; Beyond</p>
+        <p class="text-white/60 text-sm mt-2 leading-relaxed">Support continues after approval — travel, arrival and settling in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= COUNTRIES ============================= -->
+<section id="countries" class="py-24 lg:py-32 bg-paper">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14 reveal">
+      <div>
+        <p class="font-display text-gold-500 text-xs tracking-[0.3em] uppercase mb-4">Popular Destinations</p>
+        <h2 class="font-display font-bold text-3xl lg:text-4xl text-navy-900">Choose Your Country</h2>
+      </div>
+      <a href="#contact" class="font-display text-sm font-semibold text-navy-900 hover:text-gold-500 inline-flex items-center gap-1">
+        View all countries
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="reveal group rounded-2xl bg-navy-900 p-7 h-56 flex flex-col justify-between overflow-hidden relative">
+        <div class="absolute inset-0 dot-field opacity-60 group-hover:opacity-100 transition-opacity"></div>
+        <span class="relative text-4xl">🇨🇦</span>
+        <div class="relative">
+          <p class="font-display font-semibold text-white text-lg">Canada</p>
+          <p class="text-white/50 text-xs mt-1">Study · Work · PR</p>
+        </div>
+      </div>
+      <div class="reveal group rounded-2xl bg-navy-800 p-7 h-56 flex flex-col justify-between overflow-hidden relative">
+        <div class="absolute inset-0 dot-field opacity-60 group-hover:opacity-100 transition-opacity"></div>
+        <span class="relative text-4xl">🇦🇺</span>
+        <div class="relative">
+          <p class="font-display font-semibold text-white text-lg">Australia</p>
+          <p class="text-white/50 text-xs mt-1">Study · Skilled Migration</p>
+        </div>
+      </div>
+      <div class="reveal group rounded-2xl bg-navy-800 p-7 h-56 flex flex-col justify-between overflow-hidden relative">
+        <div class="absolute inset-0 dot-field opacity-60 group-hover:opacity-100 transition-opacity"></div>
+        <span class="relative text-4xl">🇬🇧</span>
+        <div class="relative">
+          <p class="font-display font-semibold text-white text-lg">United Kingdom</p>
+          <p class="text-white/50 text-xs mt-1">Study · Work Visa</p>
+        </div>
+      </div>
+      <div class="reveal group rounded-2xl bg-navy-900 p-7 h-56 flex flex-col justify-between overflow-hidden relative">
+        <div class="absolute inset-0 dot-field opacity-60 group-hover:opacity-100 transition-opacity"></div>
+        <span class="relative text-4xl">🇩🇪</span>
+        <div class="relative">
+          <p class="font-display font-semibold text-white text-lg">Germany</p>
+          <p class="text-white/50 text-xs mt-1">Study · Job Seeker Visa</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= SERVICES (boarding pass style) ============================= -->
+<section id="services" class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <p class="font-display text-gold-500 text-xs tracking-[0.3em] uppercase mb-4">What We Offer</p>
+      <h2 class="font-display font-bold text-3xl lg:text-4xl text-navy-900">Our Services</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- card -->
+      <div class="reveal rounded-2xl border border-slate-200 overflow-hidden">
+        <div class="p-6">
+          <div class="h-11 w-11 rounded-lg bg-navy-900 flex items-center justify-center mb-5">
+            <svg class="h-5 w-5 text-gold-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.42A12 12 0 0112 21a12 12 0 01-6.16-10.42L12 14z"/></svg>
+          </div>
+          <p class="font-display font-semibold text-navy-900">Study Visa</p>
+          <p class="text-slate text-sm mt-2 leading-relaxed">School selection to visa filing, mapped out for degree studies abroad.</p>
+        </div>
+        <div class="perforated px-6 py-3 flex items-center justify-between text-xs font-display tracking-widest uppercase text-slate-400">
+          <span>Route 01</span><span>FlyPath</span>
+        </div>
+      </div>
+      <!-- card -->
+      <div class="reveal rounded-2xl border border-slate-200 overflow-hidden">
+        <div class="p-6">
+          <div class="h-11 w-11 rounded-lg bg-navy-900 flex items-center justify-center mb-5">
+            <svg class="h-5 w-5 text-gold-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.3V18a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h8m-9 5h11m-8-7h4a1 1 0 011 1v3H8V5a1 1 0 011-1z"/></svg>
+          </div>
+          <p class="font-display font-semibold text-navy-900">Work Permit</p>
+          <p class="text-slate text-sm mt-2 leading-relaxed">Employer-sponsored and open work permits, handled end to end.</p>
+        </div>
+        <div class="perforated px-6 py-3 flex items-center justify-between text-xs font-display tracking-widest uppercase text-slate-400">
+          <span>Route 02</span><span>FlyPath</span>
+        </div>
+      </div>
+      <!-- card -->
+      <div class="reveal rounded-2xl border border-slate-200 overflow-hidden">
+        <div class="p-6">
+          <div class="h-11 w-11 rounded-lg bg-navy-900 flex items-center justify-center mb-5">
+            <svg class="h-5 w-5 text-gold-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12c0-4.4 4-8 9-8s9 3.6 9 8-4 8-9 8-9-3.6-9-8zm9-4v4l3 2"/></svg>
+          </div>
+          <p class="font-display font-semibold text-navy-900">Visitor &amp; Tourist Visa</p>
+          <p class="text-slate text-sm mt-2 leading-relaxed">Short stays, done right, with fast turnaround times.</p>
+        </div>
+        <div class="perforated px-6 py-3 flex items-center justify-between text-xs font-display tracking-widest uppercase text-slate-400">
+          <span>Route 03</span><span>FlyPath</span>
+        </div>
+      </div>
+      <!-- card -->
+      <div class="reveal rounded-2xl border border-slate-200 overflow-hidden">
+        <div class="p-6">
+          <div class="h-11 w-11 rounded-lg bg-navy-900 flex items-center justify-center mb-5">
+            <svg class="h-5 w-5 text-gold-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z"/></svg>
+          </div>
+          <p class="font-display font-semibold text-navy-900">Permanent Residency</p>
+          <p class="text-slate text-sm mt-2 leading-relaxed">Skilled migration, PR and citizenship prep for the long term.</p>
+        </div>
+        <div class="perforated px-6 py-3 flex items-center justify-between text-xs font-display tracking-widest uppercase text-slate-400">
+          <span>Route 04</span><span>FlyPath</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= STATS BANNER ============================= -->
+<section class="bg-gold-400">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+    <div class="reveal">
+      <p class="font-display font-bold text-navy-950 text-3xl lg:text-4xl">25K+</p>
+      <p class="text-navy-900/70 text-sm mt-1">Happy Clients</p>
+    </div>
+    <div class="reveal">
+      <p class="font-display font-bold text-navy-950 text-3xl lg:text-4xl">60+</p>
+      <p class="text-navy-900/70 text-sm mt-1">Countries Covered</p>
+    </div>
+    <div class="reveal">
+      <p class="font-display font-bold text-navy-950 text-3xl lg:text-4xl">640+</p>
+      <p class="text-navy-900/70 text-sm mt-1">Happy Families</p>
+    </div>
+    <div class="reveal">
+      <p class="font-display font-bold text-navy-950 text-3xl lg:text-4xl">120+</p>
+      <p class="text-navy-900/70 text-sm mt-1">Partner Universities</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= INSURANCE ============================= -->
+<section id="insurance" class="py-24 lg:py-32 bg-paper">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <p class="font-display text-gold-500 text-xs tracking-[0.3em] uppercase mb-4">Insurance Plans</p>
+      <h2 class="font-display font-bold text-3xl lg:text-4xl text-navy-900">Travel Insurance Coverage</h2>
+      <p class="text-slate mt-4">Comprehensive international insurance plans to protect you and your family while your immigration process is underway.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6 lg:gap-8 items-start">
+      <div class="reveal rounded-2xl bg-white border border-slate-200 p-8">
+        <p class="font-display text-xs tracking-widest uppercase text-slate-400">Plan A · Basic</p>
+        <p class="font-display font-bold text-navy-900 text-2xl mt-3">₹2 Core</p>
+        <p class="text-slate text-sm mt-1">Coverage Amount</p>
+        <p class="font-display font-bold text-navy-900 text-3xl mt-6">₹21,000</p>
+        <ul class="mt-6 space-y-3 text-sm text-slate">
+          <li class="flex gap-2"><span class="text-gold-500">✓</span>Emergency Medical</li>
+          <li class="flex gap-2"><span class="text-gold-500">✓</span>Trip Delay</li>
+        </ul>
+        <a href="#contact" class="mt-8 block text-center rounded-full border border-navy-900 text-navy-900 font-display font-semibold text-sm py-3 hover:bg-navy-900 hover:text-white transition-colors">Select Plan</a>
+      </div>
+
+      <div class="reveal rounded-2xl bg-navy-900 text-white p-8 lg:-mt-4 lg:mb-4 shadow-xl shadow-navy-900/10">
+        <p class="font-display text-xs tracking-widest uppercase text-gold-300">Most Popular · Standard</p>
+        <p class="font-display font-bold text-2xl mt-3">₹2 Cr to 50 Lakh</p>
+        <p class="text-white/60 text-sm mt-1">Coverage Amount</p>
+        <p class="font-display font-bold text-3xl mt-6">₹25,000</p>
+        <ul class="mt-6 space-y-3 text-sm text-white/80">
+          <li class="flex gap-2"><span class="text-gold-300">✓</span>Emergency Medical</li>
+          <li class="flex gap-2"><span class="text-gold-300">✓</span>Trip Delay &amp; Cancellation</li>
+          <li class="flex gap-2"><span class="text-gold-300">✓</span>Baggage Loss</li>
+        </ul>
+        <a href="#contact" class="mt-8 block text-center rounded-full bg-gold-400 text-navy-950 font-display font-semibold text-sm py-3 hover:bg-gold-300 transition-colors">Select Plan</a>
+      </div>
+
+      <div class="reveal rounded-2xl bg-white border border-slate-200 p-8">
+        <p class="font-display text-xs tracking-widest uppercase text-slate-400">Plan C · Premium</p>
+        <p class="font-display font-bold text-navy-900 text-2xl mt-3">₹4 Core</p>
+        <p class="text-slate text-sm mt-1">Coverage Amount</p>
+        <p class="font-display font-bold text-navy-900 text-3xl mt-6">₹31,000</p>
+        <ul class="mt-6 space-y-3 text-sm text-slate">
+          <li class="flex gap-2"><span class="text-gold-500">✓</span>Emergency Medical</li>
+          <li class="flex gap-2"><span class="text-gold-500">✓</span>Trip Delay &amp; Cancellation</li>
+          <li class="flex gap-2"><span class="text-gold-500">✓</span>Baggage &amp; Passport Loss</li>
+        </ul>
+        <a href="#contact" class="mt-8 block text-center rounded-full border border-navy-900 text-navy-900 font-display font-semibold text-sm py-3 hover:bg-navy-900 hover:text-white transition-colors">Select Plan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= WHY CHOOSE US + MAP ============================= -->
+<section class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+    <div class="reveal">
+      <p class="font-display text-gold-500 text-xs tracking-[0.3em] uppercase mb-4">Why Choose Us</p>
+      <h2 class="font-display font-bold text-3xl lg:text-4xl text-navy-900 leading-tight">Why Choose FlyPath Immigration?</h2>
+
+      <div class="mt-9 space-y-6">
+        <div class="flex gap-4">
+          <span class="shrink-0 h-8 w-8 rounded-full bg-gold-400 text-navy-950 font-display font-bold text-sm flex items-center justify-center">✓</span>
+          <div>
+            <p class="font-display font-semibold text-navy-900">Expert Immigration Guidance</p>
+            <p class="text-slate text-sm mt-1">RCIC-certified consultants who know each program inside out.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <span class="shrink-0 h-8 w-8 rounded-full bg-gold-400 text-navy-950 font-display font-bold text-sm flex items-center justify-center">✓</span>
+          <div>
+            <p class="font-display font-semibold text-navy-900">Personalized Strategy</p>
+            <p class="text-slate text-sm mt-1">A plan tailored to your background, goals and timeline.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <span class="shrink-0 h-8 w-8 rounded-full bg-gold-400 text-navy-950 font-display font-bold text-sm flex items-center justify-center">✓</span>
+          <div>
+            <p class="font-display font-semibold text-navy-900">Transparent Process</p>
+            <p class="text-slate text-sm mt-1">Clear costs and honest timelines, no surprises along the way.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <span class="shrink-0 h-8 w-8 rounded-full bg-gold-400 text-navy-950 font-display font-bold text-sm flex items-center justify-center">✓</span>
+          <div>
+            <p class="font-display font-semibold text-navy-900">Dedicated Support</p>
+            <p class="text-slate text-sm mt-1">We stay with you through approval, travel and settling in.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="relative aspect-square lg:aspect-[4/3] rounded-2xl bg-navy-900 overflow-hidden">
+        <div class="absolute inset-0 dot-field"></div>
+        <svg class="absolute inset-0 h-full w-full" viewBox="0 0 400 300" fill="none">
+          <path d="M60 220 Q140 60 210 140 T340 90" stroke="#D4A72C" stroke-width="2" stroke-dasharray="6 8" opacity="0.7"/>
+          <circle cx="60" cy="220" r="5" fill="#D4A72C"/>
+          <circle cx="210" cy="140" r="5" fill="#F2D27E"/>
+          <circle cx="340" cy="90" r="5" fill="#D4A72C"/>
+        </svg>
+        <div class="absolute bottom-5 left-5 right-5 text-white/70 text-xs font-display tracking-widest uppercase">
+          Active in 60+ countries worldwide
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= TESTIMONIALS ============================= -->
+<section class="py-24 lg:py-32 bg-navy-900 relative overflow-hidden">
+  <div class="absolute inset-0 dot-field"></div>
+  <div class="relative max-w-3xl mx-auto px-6 lg:px-8 text-center">
+    <p class="font-display text-gold-300 text-xs tracking-[0.3em] uppercase mb-6">Testimonials</p>
+    <h2 class="font-display font-bold text-3xl lg:text-4xl text-white mb-12">What Our Clients Say</h2>
+
+    <div id="testimonialWrap" class="relative min-h-[220px]">
+      <!-- slides injected/controlled by JS -->
+      <div class="testimonial-slide" data-active="true">
+        <div class="text-gold-300 text-lg mb-4">★★★★★</div>
+        <p class="text-white/85 text-lg lg:text-xl leading-relaxed">FlyPath made our Canadian PR process completely stress-free. Every document, every deadline, every step was mapped out clearly — I couldn't have asked for a smoother flight.</p>
+        <div class="mt-6 flex items-center justify-center gap-3">
+          <span class="h-10 w-10 rounded-full bg-gold-400 text-navy-950 font-display font-bold flex items-center justify-center text-sm">RM</span>
+          <div class="text-left">
+            <p class="text-white font-display font-semibold text-sm">Rajiv Mehta</p>
+            <p class="text-white/50 text-xs">Permanent Resident, Canada</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-slide hidden">
+        <div class="text-gold-300 text-lg mb-4">★★★★★</div>
+        <p class="text-white/85 text-lg lg:text-xl leading-relaxed">Our study visa for Germany was approved faster than we expected. The team answered every question within hours, not days.</p>
+        <div class="mt-6 flex items-center justify-center gap-3">
+          <span class="h-10 w-10 rounded-full bg-gold-400 text-navy-950 font-display font-bold flex items-center justify-center text-sm">SK</span>
+          <div class="text-left">
+            <p class="text-white font-display font-semibold text-sm">Simran Kaur</p>
+            <p class="text-white/50 text-xs">Student Visa, Germany</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-slide hidden">
+        <div class="text-gold-300 text-lg mb-4">★★★★★</div>
+        <p class="text-white/85 text-lg lg:text-xl leading-relaxed">Sponsoring my parents felt overwhelming until FlyPath took over. Transparent pricing, real people on the phone, and it actually got done.</p>
+        <div class="mt-6 flex items-center justify-center gap-3">
+          <span class="h-10 w-10 rounded-full bg-gold-400 text-navy-950 font-display font-bold flex items-center justify-center text-sm">AV</span>
+          <div class="text-left">
+            <p class="text-white font-display font-semibold text-sm">Arjun Verma</p>
+            <p class="text-white/50 text-xs">Family Sponsorship, UK</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="testimonialDots" class="mt-10 flex items-center justify-center gap-2">
+      <button class="h-2 w-6 rounded-full bg-gold-400 transition-all" data-dot="0" aria-label="Testimonial 1"></button>
+      <button class="h-2 w-2 rounded-full bg-white/30 transition-all" data-dot="1" aria-label="Testimonial 2"></button>
+      <button class="h-2 w-2 rounded-full bg-white/30 transition-all" data-dot="2" aria-label="Testimonial 3"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= CONTACT / BOOKING ============================= -->
+<section id="contact" class="py-24 lg:py-32 bg-paper">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-5 gap-14 lg:gap-20">
+
+    <div class="lg:col-span-2 reveal">
+      <p class="font-display text-gold-500 text-xs tracking-[0.3em] uppercase mb-4">Get In Touch</p>
+      <h2 class="font-display font-bold text-3xl lg:text-4xl text-navy-900 leading-tight">Start Your Immigration Journey Today</h2>
+      <p class="text-slate mt-5 leading-relaxed">Book a free assessment with one of our licensed consultants. We'll review your goals and outline the fastest realistic path forward.</p>
+
+      <div class="mt-9 space-y-6">
+        <div class="flex gap-4">
+          <div class="shrink-0 h-10 w-10 rounded-lg bg-navy-900 flex items-center justify-center">
+            <svg class="h-5 w-5 text-gold-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div>
+            <p class="font-display font-semibold text-navy-900 text-sm">Office</p>
+            <p class="text-slate text-sm mt-1">9th Floor, Sky Tower, Sector 17, Chandigarh 160017</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="shrink-0 h-10 w-10 rounded-lg bg-navy-900 flex items-center justify-center">
+            <svg class="h-5 w-5 text-gold-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.98.804l1.13 5.65a1 1 0 01-.28.94l-1.7 1.7a16 16 0 006.6 6.6l1.7-1.7a1 1 0 01.94-.28l5.65 1.13a1 1 0 01.804.98V19a2 2 0 01-2 2h-1C9.163 21 3 14.837 3 7V5z"/></svg>
+          </div>
+          <div>
+            <p class="font-display font-semibold text-navy-900 text-sm">Phone</p>
+            <p class="text-slate text-sm mt-1">+91 172-555-0134</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="shrink-0 h-10 w-10 rounded-lg bg-navy-900 flex items-center justify-center">
+            <svg class="h-5 w-5 text-gold-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg>
+          </div>
+          <div>
+            <p class="font-display font-semibold text-navy-900 text-sm">Email</p>
+            <p class="text-slate text-sm mt-1">hello@flypathimmigration.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-3 reveal">
+      <form id="bookingForm" class="bg-white rounded-2xl border border-slate-200 p-7 lg:p-9">
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label class="text-xs font-display font-semibold uppercase tracking-wide text-slate-500">First Name</label>
+            <input required type="text" placeholder="Your first name" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-gold-400" />
+          </div>
+          <div>
+            <label class="text-xs font-display font-semibold uppercase tracking-wide text-slate-500">Last Name</label>
+            <input required type="text" placeholder="Your last name" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-gold-400" />
+          </div>
+          <div>
+            <label class="text-xs font-display font-semibold uppercase tracking-wide text-slate-500">Email Address</label>
+            <input required type="email" placeholder="you@example.com" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-gold-400" />
+          </div>
+          <div>
+            <label class="text-xs font-display font-semibold uppercase tracking-wide text-slate-500">Phone Number</label>
+            <input required type="tel" placeholder="+91 00000 00000" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-gold-400" />
+          </div>
+          <div class="sm:col-span-2">
+            <label class="text-xs font-display font-semibold uppercase tracking-wide text-slate-500">Visa Type</label>
+            <select class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-gold-400">
+              <option>Study Visa</option>
+              <option>Work Permit</option>
+              <option>Visitor / Tourist Visa</option>
+              <option>Permanent Residency</option>
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="text-xs font-display font-semibold uppercase tracking-wide text-slate-500">Message</label>
+            <textarea rows="4" placeholder="Tell us about your goals" class="mt-2 w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-gold-400"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="mt-6 w-full inline-flex items-center justify-center gap-2 bg-gold-400 hover:bg-gold-300 text-navy-950 font-display font-semibold px-7 py-3.5 rounded-full transition-colors">
+          Send My Request
+        </button>
+        <p id="formMsg" class="hidden mt-4 text-sm text-center text-navy-900 font-medium">Thanks — we've received your request and will be in touch shortly.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- SHARED FOOTER START — copy this exact block onto every page  -->
+<!-- ============================================================ -->
+<footer class="bg-navy-950 text-white/70">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div>
+      <a href="index.html" class="flex items-center gap-2 mb-4">
+        <img src="assets/logo-icon.png" alt="FlyPath Immigration Services" class="h-8 w-auto" />
+        <span class="font-display font-bold text-white text-lg">FlyPath</span>
+      </a>
+      <p class="text-sm leading-relaxed">Your pathway to global opportunities — visa and immigration guidance you can trust.</p>
+    </div>
+
+    <div>
+      <p class="font-display font-semibold text-white text-sm mb-4">Services</p>
+      <ul class="space-y-2.5 text-sm">
+        <li><a href="#services" class="hover:text-gold-300">Study Visa</a></li>
+        <li><a href="#services" class="hover:text-gold-300">Work Permit</a></li>
+        <li><a href="#services" class="hover:text-gold-300">Visitor &amp; Tourist Visa</a></li>
+        <li><a href="#services" class="hover:text-gold-300">Permanent Residency</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="font-display font-semibold text-white text-sm mb-4">Company</p>
+      <ul class="space-y-2.5 text-sm">
+        <li><a href="#about" class="hover:text-gold-300">About Us</a></li>
+        <li><a href="#countries" class="hover:text-gold-300">Countries</a></li>
+        <li><a href="#insurance" class="hover:text-gold-300">Insurance Plans</a></li>
+        <li><a href="#contact" class="hover:text-gold-300">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="font-display font-semibold text-white text-sm mb-4">Contact</p>
+      <ul class="space-y-2.5 text-sm">
+        <li>9th Floor, Sky Tower, Chandigarh 160017</li>
+        <li>+91 172-555-0134</li>
+        <li>hello@flypathimmigration.com</li>
+      </ul>
+      <div class="flex gap-3 mt-5">
+        <a href="#" aria-label="Facebook" class="h-8 w-8 rounded-full border border-white/20 flex items-center justify-center hover:border-gold-300 hover:text-gold-300"><svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 3.9-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0022 12z"/></svg></a>
+        <a href="#" aria-label="Instagram" class="h-8 w-8 rounded-full border border-white/20 flex items-center justify-center hover:border-gold-300 hover:text-gold-300"><svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.42.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77c-.55.55-1.11.9-1.77 1.15-.64.25-1.37.42-2.43.47-1.06.05-1.42.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 015.45.53c.64-.25 1.37-.42 2.43-.47C8.94.01 9.3 0 12 0zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg></a>
+        <a href="#" aria-label="LinkedIn" class="h-8 w-8 rounded-full border border-white/20 flex items-center justify-center hover:border-gold-300 hover:text-gold-300"><svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2 3.77-2 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.35-.02-3.1-1.9-3.1-1.9 0-2.2 1.5-2.2 3v5.7h-4V9z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
+      <p>© 2026 FlyPath Immigration Services. All rights reserved.</p>
+      <p>Your Pathway to Global Opportunities</p>
+    </div>
+  </div>
+</footer>
+<!-- ============================================================ -->
+<!-- SHARED FOOTER END                                             -->
+<!-- ============================================================ -->
+
+<script>
+  // mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const iconOpen = document.getElementById('iconOpen');
+  const iconClose = document.getElementById('iconClose');
+  menuBtn.addEventListener('click', () => {
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', String(!isOpen));
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+  }));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // testimonial rotator
+  const slides = document.querySelectorAll('.testimonial-slide');
+  const dots = document.querySelectorAll('[data-dot]');
+  let current = 0;
+  function showSlide(i) {
+    slides.forEach((s, idx) => s.classList.toggle('hidden', idx !== i));
+    dots.forEach((d, idx) => {
+      d.classList.toggle('w-6', idx === i);
+      d.classList.toggle('bg-gold-400', idx === i);
+      d.classList.toggle('w-2', idx !== i);
+      d.classList.toggle('bg-white/30', idx !== i);
+    });
+    current = i;
+  }
+  dots.forEach(d => d.addEventListener('click', () => showSlide(parseInt(d.dataset.dot))));
+  setInterval(() => showSlide((current + 1) % slides.length), 6000);
+
+  // booking form (no backend — friendly confirmation only)
+  const form = document.getElementById('bookingForm');
+  const formMsg = document.getElementById('formMsg');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formMsg.classList.remove('hidden');
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
