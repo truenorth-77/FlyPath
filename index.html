@@ -120,23 +120,28 @@
 <!-- ============================================================ -->
 <header class="fixed top-0 inset-x-0 z-50 bg-navy-900/95 backdrop-blur border-b border-navy-800">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16 lg:h-20">
+    <div class="flex items-center justify-between h-16 lg:h-24">
       <a href="index.html" class="flex items-center gap-2 shrink-0">
-        <img src="assets/logo-icon.png" alt="FlyPath Immigration Services" class="h-9 lg:h-10 w-auto" />
-        <span class="font-display font-bold text-lg lg:text-xl tracking-tight text-white">FlyPath</span>
-      </a>
+    <img
+        src="images/logo.png"
+        alt="FlyPath Immigration Services"
+        class="h-12 lg:h-20 w-auto drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]"
+    />
+    <!-- <span class="font-display font-bold text-lg lg:text-xl tracking-tight text-white">
+        FlyPath
+    </span> -->
+</a>
 
       <nav class="hidden lg:flex items-center gap-9 font-display text-sm font-medium">
-        <a href="#home" class="text-white/90 hover:text-gold-300 transition-colors">Home</a>
-        <a href="#about" class="text-white/90 hover:text-gold-300 transition-colors">About</a>
-        <a href="#services" class="text-white/90 hover:text-gold-300 transition-colors">Services</a>
-        <a href="#countries" class="text-white/90 hover:text-gold-300 transition-colors">Countries</a>
-        <a href="#insurance" class="text-white/90 hover:text-gold-300 transition-colors">Insurance</a>
-        <a href="#contact" class="text-white/90 hover:text-gold-300 transition-colors">Contact</a>
+        <a href="index.html" class="text-gold-300 border-b-2 border-gold-400 pb-1 transition-colors">Home</a>
+        <a href="about.html" class="text-white/90 hover:text-gold-300 transition-colors">About</a>
+        <a href="services.html" class="text-white/90 hover:text-gold-300 transition-colors">Services</a>
+       
+        <a href="contact.html" class="text-white/90 hover:text-gold-300 transition-colors">Contact</a>
       </nav>
 
       <div class="hidden lg:block">
-        <a href="#contact" class="inline-flex items-center gap-2 bg-gold-400 hover:bg-gold-300 text-navy-950 font-display font-semibold text-sm px-5 py-2.5 rounded-full transition-colors">
+        <a href="contact.html" class="inline-flex items-center gap-2 bg-gold-400 hover:bg-gold-300 text-navy-950 font-display font-semibold text-sm px-5 py-2.5 rounded-full transition-colors">
           Book a Consultation
         </a>
       </div>
@@ -155,13 +160,12 @@
   <!-- mobile panel -->
   <div id="mobileMenu" class="hidden lg:hidden border-t border-navy-800 bg-navy-900">
     <nav class="px-6 py-5 flex flex-col gap-4 font-display text-sm font-medium">
-      <a href="#home" class="text-white/90 hover:text-gold-300">Home</a>
-      <a href="#about" class="text-white/90 hover:text-gold-300">About</a>
-      <a href="#services" class="text-white/90 hover:text-gold-300">Services</a>
-      <a href="#countries" class="text-white/90 hover:text-gold-300">Countries</a>
-      <a href="#insurance" class="text-white/90 hover:text-gold-300">Insurance</a>
-      <a href="#contact" class="text-white/90 hover:text-gold-300">Contact</a>
-      <a href="#contact" class="mt-2 inline-flex justify-center items-center gap-2 bg-gold-400 text-navy-950 font-semibold px-5 py-2.5 rounded-full">
+      <a href="index.html" class="text-gold-300">Home</a>
+      <a href="about.html" class="text-white/90 hover:text-gold-300">About</a>
+      <a href="services.html" class="text-white/90 hover:text-gold-300">Services</a>
+      
+      <a href="contact.html" class="text-white/90 hover:text-gold-300">Contact</a>
+      <a href="contact.html" class="mt-2 inline-flex justify-center items-center gap-2 bg-gold-400 text-navy-950 font-semibold px-5 py-2.5 rounded-full">
         Book a Consultation
       </a>
     </nav>
@@ -194,10 +198,10 @@
     </p>
 
     <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gold-400 hover:bg-gold-300 text-navy-950 font-display font-semibold px-7 py-3.5 rounded-full transition-colors">
+      <a href="contact.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gold-400 hover:bg-gold-300 text-navy-950 font-display font-semibold px-7 py-3.5 rounded-full transition-colors">
         Start Your Assessment
       </a>
-      <a href="#services" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-white/25 hover:border-gold-300 hover:text-gold-300 text-white font-display font-semibold px-7 py-3.5 rounded-full transition-colors">
+      <a href="services.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-white/25 hover:border-gold-300 hover:text-gold-300 text-white font-display font-semibold px-7 py-3.5 rounded-full transition-colors">
         Explore Services
       </a>
     </div>
@@ -241,11 +245,15 @@
     <div class="reveal order-2 lg:order-1">
       <div class="relative aspect-[4/3] rounded-2xl bg-gradient-to-br from-navy-800 to-navy-900 overflow-hidden">
         <div class="absolute inset-0 dot-field"></div>
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="h-40 w-40 lg:h-52 lg:w-52 rounded-full stamp-ring flex items-center justify-center">
-            <img src="" alt="" class="h-20 lg:h-28 w-auto opacity-90" />
-          </div>
-        </div>
+       <div class="absolute inset-0 flex items-center justify-center">
+    <div class="h-40 w-40 lg:h-64 lg:w-64 rounded-full stamp-ring flex items-center justify-center">
+        <img
+            src="images/logo-icon.png"
+            alt="FlyPath Logo"
+            class="h-20 lg:h-28 w-auto opacity-90 drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]"
+        />
+    </div>
+</div>
         <div class="absolute bottom-5 left-5 right-5 flex items-center justify-between text-white/70 text-xs font-display tracking-widest uppercase">
           <span>Est. Global Network</span>
           <span>15+ Years</span>
@@ -304,6 +312,8 @@
   </div>
 </section>
 
+
+
 <!-- ============================= HOW WE WORK (zigzag route) ============================= -->
 <section class="py-24 lg:py-32 bg-navy-900 relative overflow-hidden">
   <div class="absolute inset-0 dot-field"></div>
@@ -350,7 +360,7 @@
         <p class="font-display text-gold-500 text-xs tracking-[0.3em] uppercase mb-4">Popular Destinations</p>
         <h2 class="font-display font-bold text-3xl lg:text-4xl text-navy-900">Choose Your Country</h2>
       </div>
-      <a href="#contact" class="font-display text-sm font-semibold text-navy-900 hover:text-gold-500 inline-flex items-center gap-1">
+      <a href="contact.html" class="font-display text-sm font-semibold text-navy-900 hover:text-gold-500 inline-flex items-center gap-1">
         View all countries
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </a>
@@ -481,7 +491,7 @@
 </section>
 
 <!-- ============================= INSURANCE ============================= -->
-<section id="insurance" class="py-24 lg:py-32 bg-paper">
+<!-- <section id="insurance" class="py-24 lg:py-32 bg-paper">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-14 reveal">
       <p class="font-display text-gold-500 text-xs tracking-[0.3em] uppercase mb-4">Insurance Plans</p>
@@ -499,7 +509,7 @@
           <li class="flex gap-2"><span class="text-gold-500">✓</span>Emergency Medical</li>
           <li class="flex gap-2"><span class="text-gold-500">✓</span>Trip Delay</li>
         </ul>
-        <a href="#contact" class="mt-8 block text-center rounded-full border border-navy-900 text-navy-900 font-display font-semibold text-sm py-3 hover:bg-navy-900 hover:text-white transition-colors">Select Plan</a>
+        <a href="contact.html" class="mt-8 block text-center rounded-full border border-navy-900 text-navy-900 font-display font-semibold text-sm py-3 hover:bg-navy-900 hover:text-white transition-colors">Select Plan</a>
       </div>
 
       <div class="reveal rounded-2xl bg-navy-900 text-white p-8 lg:-mt-4 lg:mb-4 shadow-xl shadow-navy-900/10">
@@ -512,7 +522,7 @@
           <li class="flex gap-2"><span class="text-gold-300">✓</span>Trip Delay &amp; Cancellation</li>
           <li class="flex gap-2"><span class="text-gold-300">✓</span>Baggage Loss</li>
         </ul>
-        <a href="#contact" class="mt-8 block text-center rounded-full bg-gold-400 text-navy-950 font-display font-semibold text-sm py-3 hover:bg-gold-300 transition-colors">Select Plan</a>
+        <a href="contact.html" class="mt-8 block text-center rounded-full bg-gold-400 text-navy-950 font-display font-semibold text-sm py-3 hover:bg-gold-300 transition-colors">Select Plan</a>
       </div>
 
       <div class="reveal rounded-2xl bg-white border border-slate-200 p-8">
@@ -525,11 +535,11 @@
           <li class="flex gap-2"><span class="text-gold-500">✓</span>Trip Delay &amp; Cancellation</li>
           <li class="flex gap-2"><span class="text-gold-500">✓</span>Baggage &amp; Passport Loss</li>
         </ul>
-        <a href="#contact" class="mt-8 block text-center rounded-full border border-navy-900 text-navy-900 font-display font-semibold text-sm py-3 hover:bg-navy-900 hover:text-white transition-colors">Select Plan</a>
+        <a href="contact.html" class="mt-8 block text-center rounded-full border border-navy-900 text-navy-900 font-display font-semibold text-sm py-3 hover:bg-navy-900 hover:text-white transition-colors">Select Plan</a>
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- ============================= WHY CHOOSE US + MAP ============================= -->
 <section class="py-24 lg:py-32 bg-white">
@@ -729,30 +739,34 @@
 <footer class="bg-navy-950 text-white/70">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
     <div>
-      <a href="index.html" class="flex items-center gap-2 mb-4">
-        <img src="assets/logo-icon.png" alt="FlyPath Immigration Services" class="h-8 w-auto" />
-        <span class="font-display font-bold text-white text-lg">FlyPath</span>
-      </a>
+         <a href="index.html" class="flex items-center gap-2 mb-4">
+    <img
+        src="images/logo.png"
+        alt="FlyPath Immigration Services"
+        class="h-20 w-auto drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]"
+    />
+    <!-- <span class="font-display font-bold text-white text-lg">FlyPath</span> -->
+</a>
       <p class="text-sm leading-relaxed">Your pathway to global opportunities — visa and immigration guidance you can trust.</p>
     </div>
 
     <div>
       <p class="font-display font-semibold text-white text-sm mb-4">Services</p>
       <ul class="space-y-2.5 text-sm">
-        <li><a href="#services" class="hover:text-gold-300">Study Visa</a></li>
-        <li><a href="#services" class="hover:text-gold-300">Work Permit</a></li>
-        <li><a href="#services" class="hover:text-gold-300">Visitor &amp; Tourist Visa</a></li>
-        <li><a href="#services" class="hover:text-gold-300">Permanent Residency</a></li>
+        <li><a href="services.html#study-visa" class="hover:text-gold-300">Study Visa</a></li>
+        <li><a href="services.html#work-permit" class="hover:text-gold-300">Work Permit</a></li>
+        <li><a href="services.html#visitor-visa" class="hover:text-gold-300">Visitor &amp; Tourist Visa</a></li>
+        <li><a href="services.html#permanent-residency" class="hover:text-gold-300">Permanent Residency</a></li>
       </ul>
     </div>
 
     <div>
       <p class="font-display font-semibold text-white text-sm mb-4">Company</p>
       <ul class="space-y-2.5 text-sm">
-        <li><a href="#about" class="hover:text-gold-300">About Us</a></li>
-        <li><a href="#countries" class="hover:text-gold-300">Countries</a></li>
-        <li><a href="#insurance" class="hover:text-gold-300">Insurance Plans</a></li>
-        <li><a href="#contact" class="hover:text-gold-300">Contact</a></li>
+        <li><a href="about.html" class="hover:text-gold-300">About Us</a></li>
+        <li><a href="index.html#countries" class="hover:text-gold-300">Countries</a></li>
+        <li><a href="index.html#insurance" class="hover:text-gold-300">Insurance Plans</a></li>
+        <li><a href="contact.html" class="hover:text-gold-300">Contact</a></li>
       </ul>
     </div>
 
@@ -813,7 +827,7 @@
   }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
 
-  // testimonial rotator
+  // testimonial rotator (only runs if slides exist on this page)
   const slides = document.querySelectorAll('.testimonial-slide');
   const dots = document.querySelectorAll('[data-dot]');
   let current = 0;
@@ -827,17 +841,21 @@
     });
     current = i;
   }
-  dots.forEach(d => d.addEventListener('click', () => showSlide(parseInt(d.dataset.dot))));
-  setInterval(() => showSlide((current + 1) % slides.length), 6000);
+  if (slides.length) {
+    dots.forEach(d => d.addEventListener('click', () => showSlide(parseInt(d.dataset.dot))));
+    setInterval(() => showSlide((current + 1) % slides.length), 6000);
+  }
 
-  // booking form (no backend — friendly confirmation only)
+  // booking form (only runs if a form exists on this page — no backend, friendly confirmation only)
   const form = document.getElementById('bookingForm');
   const formMsg = document.getElementById('formMsg');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    formMsg.classList.remove('hidden');
-    form.reset();
-  });
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      formMsg.classList.remove('hidden');
+      form.reset();
+    });
+  }
 </script>
 
 </body>
